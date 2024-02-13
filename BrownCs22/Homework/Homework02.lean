@@ -73,7 +73,9 @@ Remember `ℕ = {0, 1, 2, ...}`, the natural numbers.
 
 @[autograded 3]
 theorem problem_1 : ∀ n : ℕ, ∃ x : ℕ, n < x := by
-  sorry
+  fix n
+  existsi n+1
+  linarith
   done
 
 
@@ -121,7 +123,9 @@ First, practice an introduction:
 
 @[autograded 1]
 theorem problem_2 : 220 ∣ 880 := by
-  sorry
+  dsimp dvd
+  existsi 4
+  linarith
   done
 
 /-
@@ -133,7 +137,12 @@ is also a divisor of 220.
 
 @[autograded 3]
 theorem problem_3 : ∀ x : ℕ, x ∣ 22 → x ∣ 220 := by
-  sorry
+  dsimp dvd
+  fix x
+  assume hp1
+  eliminate hp1 with p h1
+  existsi 10*p
+  linarith
   done
 
 
@@ -169,7 +178,10 @@ No need to start with `assume`.
 
 @[autograded 3]
 theorem problem_4 (a b : ℤ) (h : ∀ x : ℤ, 2*a ≤ x ∨ x ≤ 2*b) : a ≤ b := by
-  sorry
+  have h1 : 2*a ≤ (a+b) ∨ (a+b)≤ 2*b := h (a+b)
+  eliminate h1 with h2 h3
+  linarith
+  linarith
   done
 
 
