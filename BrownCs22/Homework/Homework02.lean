@@ -231,7 +231,7 @@ can you state and use?
 
 
 
-theorem bonus_challenge (p : Prop) : ¬ (p ↔ ¬ p) := by
+theorem bonus_cha llenge (p : Prop) : ¬ (p ↔ ¬ p) := by
   sorry
 
 
